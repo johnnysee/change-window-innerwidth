@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const App = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+  }, [])
+
   return (
     <div>
-      <h1>Hello World</h1>
+    <h1>Your inner window width is:</h1>
+      <h2>
+      {windowWidth}
+      </h2>
     </div>
   )
 }
